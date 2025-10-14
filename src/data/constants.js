@@ -116,11 +116,6 @@ export const skills = [
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg",
       },
       {
-        name: "Keras",
-        image:
-          "https://miro.medium.com/v2/resize:fit:600/1*DKu_54iqz6C-p6ndo7rO3g.png",
-      },
-      {
         name: "pyTorch",
         image:
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg",
@@ -227,7 +222,7 @@ export const experiences = [
 
 export const projects = [
   {
-    id: 0,
+    id: 1,
     title: "Ecommerce Clothing Brand",
     date: "August 2024 - October 2024",
     description:
@@ -244,6 +239,23 @@ export const projects = [
     category: "web app",
     github: "https://github.com/tasrif6/comfox-mern-stack",
     webapp: "https://comfox-clothing-brand.netlify.app/",
+  },{
+    id: 0,
+    title: "Shopsy Clothing Brand",
+    date: " October 2025",
+    description:
+      " A React and Tailwind CSS Ecommerce Frontend Project. Where all the fundamentals and necessary features have been added.",
+    image:
+      "https://res.cloudinary.com/do0hjxofc/image/upload/v1760347312/Screenshot_2025-10-13_135524_fysyxz.png",
+    tags: [
+      "React Js",
+      "Tailwind CSS",
+      "CSS",
+      "HTML",
+    ],
+    category: "web app",
+    github: "https://github.com/tasrif6/React-Ecommerce-Project",
+    webapp: "https://shopsy-react-ecommerce.netlify.app/",
   },
 
 ];
