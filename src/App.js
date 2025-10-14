@@ -42,17 +42,16 @@ function App() {
         <Body>
           <StyledStarsCanvas />
           <div>
-          <Hero/>
           <Wrapper>
+          <Hero/>
+          </Wrapper>
             <Skills />
             <Experience/>
-          </Wrapper>
           <Wrapper>
             <Projects />
           </Wrapper>
-          <Wrapper>
             <Contact />
-          </Wrapper>
+         
           <Footer />
         </div>
         </Body>
