@@ -1,144 +1,161 @@
 import React from "react";
 import styled from "styled-components";
-import { name } from './../../../node_modules/react-router-dom/dist/index';
 import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
 import HeroImg from "../../images/HeroImage.jpg";
 import HeroBgAnimation from "../HeroBgAnimation";
-import Tilt  from "react-parallax-tilt";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import { headContainerAnimation, headContentAnimation, headTextAnimation } from "../../utils/motion";
+import {
+  headContainerAnimation,
+  headContentAnimation,
+  headTextAnimation,
+} from "../../utils/motion";
 import StarCanvas from "../canvas/Stars";
 
 const HeroContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    position: relative;
-    padding: 80px 30px;
-    z-index: 1;
-    @media (max-width: 960px){
-        padding: 66px 16px;
-    }
-    @media (max-width: 640px){
-        padding: 32px 16px;
-    }
-    clip-path: polygon (0 0, 100% 0, 100% 100%, 70% 95%, 0 100%)
-`;
-const HeroInnerContainer = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: auto;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    padding: 60px 20px;
     align-items: center;
-    width: 100%;
-    max-width: 1100px;
-    @media (max-width: 960px){
-        flex-directin: column
-    }
+    min-height: auto;
+  }
+
+  @media (max-width: 640px) {
+    padding: 40px 16px;
+    min-height: auto;
+  }
 `;
+
+const HeroInnerContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  gap: 40px;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  @media (max-width: 640px) {
+    gap: 20px;
+  }
+`;
+
 const HeroLeftContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 960px) {
     width: 100%;
-    order: 1;
-    @media (max-width: 960px){
-        order: 2;
-        margin-bottom: 30px;
-        display: flex;
-        gap: 6px;
-        flex-direction: column;
-        align-items: center;
-    }
+    text-align: center;
+    gap: 16px;
+  }
 `;
+
 const HeroRightContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 960px) {
     width: 100%;
-    order: 2;
-    display: flex;
-    justify-content: end;
-    @media (max-width: 960px){
-        order: 2;
-        margin-bottom: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-contents: center;
-        margin-bottom: 80px;
-    }
-    @media (max-width: 640px) {
-        margin-bottom: 30px;
-    }
+    order: -1;
+  }
 `;
 
 const Title = styled.div`
-    font-weight: 700px;
-    font-size: 50px;
-    color: ${({ theme }) => theme.text_primary};
-    line-height: 68px;
+  font-weight: 700;
+  font-size: 50px;
+  color: ${({ theme }) => theme.text_primary};
+  line-height: 68px;
+  text-align: left;
 
-    @media (max-width: 960px;
-        text-align: center;)
+  @media (max-width: 960px) {
+    font-size: 36px;
+    line-height: 48px;
+    text-align: center;
+  }
 
-    @media (max-width: 960px){
-        font-size: 40px;
-        line-height: 8px;
-    }
-`;
-const TextLoop = styled.div`
-    font-weight: 600px;
-    font-size: 32px;
-    display: flex;
-    gap: 12px;
-    color: ${({ theme }) => theme.text_primary};
-    line-height: 68px;
-
-    @media (max-width: 960px;
-        text-align: center;)
-
-    @media (max-width: 960px){
-        font-size: 40px;
-        line-height: 8px;
-    }
-`;
-const Span = styled.div`
-    cursor:pointer;
-    color: ${({ theme }) => theme.primary};
-    }
-`;
-const SubTitle = styled.div`
-    font-size: 20px;
-    line-height: 32px;
-    margin-bottom: 42px;
-    color: ${({ theme }) => theme.text_primary + 95 }
-    
-    @media (max-width: 960px) {
-        text-align: center;
-    }
-
-    @media (max-width: 960px) {
-        font-size: 16px;
-        line-height: 32px;
+  @media (max-width: 640px) {
+    font-size: 28px;
+    line-height: 38px;
   }
 `;
+
+const TextLoop = styled.div`
+  font-weight: 600;
+  font-size: 32px;
+  display: flex;
+  gap: 12px;
+  color: ${({ theme }) => theme.text_primary};
+  line-height: 1.2;
+  min-height: 45px;
+  text-align: left;
+  flex-wrap: wrap;
+
+  @media (max-width: 960px) {
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    min-height: 35px;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 20px;
+    min-height: 30px;
+  }
+`;
+
+const Span = styled.div`
+  cursor: pointer;
+  color: ${({ theme }) => theme.primary};
+`;
+
+const SubTitle = styled.div`
+  font-size: 20px;
+  line-height: 32px;
+  color: ${({ theme }) => theme.text_primary + 95};
+  text-align: left;
+
+  @media (max-width: 960px) {
+    text-align: center;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+    line-height: 24px;
+  }
+`;
+
 const ResumeButton = styled.a`
-     -webkit-appearance: button;
+  -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
   text-decoration: none;
-
-  width: 95%;
-  max-width: 300px;
-  text-align: center;
-  padding: 16px 0;
-
+  width: fit-content;
+  padding: 16px 32px;
   background: hsla(271, 100%, 50%, 1);
   background: linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
-  background: -moz-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
-  );
-  background: -webkit-linear-gradient(
     225deg,
     hsla(271, 100%, 50%, 1) 0%,
     hsla(294, 100%, 50%, 1) 100%
@@ -147,59 +164,73 @@ const ResumeButton = styled.a`
   border-radius: 50px;
   font-weight: 600;
   font-size: 20px;
-     &:hover {
-        transform: scale(1.05);
-    transition: all 0.4s ease-in-out;
-    box-shadow:  20px 20px 60px #1F2634,
-    filter: brightness(1);
-    }    
-    
-    
-    @media (max-width: 640px) {
-        padding: 12px 0;
-        font-size: 18px;
-    } 
-    color: white;
-`
+  color: white;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  @media (max-width: 960px) {
+    align-self: center;
+  }
+
+  @media (max-width: 640px) {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+`;
+
+const ImgContainer = styled.div`
+  width: 100%;
+  max-width: 400px;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 960px) {
+    max-width: 300px;
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (max-width: 640px) {
+    max-width: 250px;
+    width: 250px;
+    height: 250px;
+  }
+`;
 
 const Img = styled.img`
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    max-width: 400px;
-    border: 2px solid $ {({ theme }) => theme.primary};
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* <-- adjust this */
 
-    @media (max-width: 640px) {
-        padding: 280px;
-        font-size: 280px;
-    } 
+  border: 2px solid ${({ theme }) => theme.primary};
 `;
-const HeroBg =styled.div`
-    position: absolute;
-    display: flex;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 50%;
-    width:100%;
-    height: 100%;
-    max-width: 1360px;
-    justify-content: end;
-    -webkit-trnsform: translatex (-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
 
-    @media (max-width: 960px) {
-    justify-content: center;
-    padding: 0 0px;
-    } 
+const TypewriterBox = styled.div`
+  display: inline-block;
+  min-width: 150px;
+  height: auto;
+  overflow: hidden;
+
+  @media (max-width: 640px) {
+    min-width: 120px;
+  }
 `;
+
 const slideInVariants = (direction = "left") => ({
   hidden: { x: direction === "left" ? -100 : 100, opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
     transition: {
-      duration: 2, // smooth transition duration
+      duration: 1,
       ease: "easeOut",
     },
   },
@@ -207,54 +238,63 @@ const slideInVariants = (direction = "left") => ({
 
 const Hero = () => {
   return (
-    <div id="about"> 
-        <HeroContainer>
-            <HeroBg>
-                <StarCanvas/>
-                <HeroBgAnimation />
+    <div id="about">
+      <HeroContainer>
+        <HeroInnerContainer>
+          <HeroLeftContainer>
+            <motion.div
+              variants={slideInVariants("right")}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              <Title>
+                Hi! I'm <br /> {Bio.name}
+              </Title>
+            </motion.div>
 
-            </HeroBg>
-                    <HeroInnerContainer>
-                        <HeroLeftContainer>
-                            <motion.div 
-                            variants={slideInVariants("right")}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.5 }}> 
-                            <Title>
-                                Hi! I'm <br/> {Bio.name}
-                            </Title>
-                            </motion.div>
-                            <TextLoop>
-                                A
-                                <Span>
-                                    <Typewriter options={{
-                                        strings: Bio.roles,
-                                        autoStart: true,
-                                        loop: true,
-                                    }}/>
-                                </Span>
-                            </TextLoop>
-                            <motion.div 
-                                variants={slideInVariants("left")}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.5 }}>
-                            <SubTitle> {Bio.description} </SubTitle>
-                            </motion.div>
-                            <motion.div {...headContainerAnimation}>
-                            <ResumeButton href={Bio.resume} target="_blank"> Check Resume </ResumeButton>
-                            </motion.div>
-                        </HeroLeftContainer>
-                        <HeroRightContainer>
-                            <Tilt>
-                                <Img src={HeroImg} alt= "Md Tasrif Khan" />
-                            </Tilt>
-                        </HeroRightContainer>
-                    </HeroInnerContainer>
-        </HeroContainer> 
+            <TextLoop>
+              A
+              <Span>
+                <TypewriterBox>
+                  <Typewriter
+                    options={{
+                      strings: Bio.roles,
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
+                </TypewriterBox>
+              </Span>
+            </TextLoop>
+
+            <motion.div
+              variants={slideInVariants("left")}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              <SubTitle>{Bio.description}</SubTitle>
+            </motion.div>
+
+            <motion.div {...headContainerAnimation}>
+              <ResumeButton href={Bio.resume} target="_blank">
+                Check Resume
+              </ResumeButton>
+            </motion.div>
+          </HeroLeftContainer>
+
+          <HeroRightContainer>
+            <Tilt>
+              <ImgContainer>
+                <Img src={HeroImg} alt="Hero" />
+              </ImgContainer>
+            </Tilt>
+          </HeroRightContainer>
+        </HeroInnerContainer>
+      </HeroContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
